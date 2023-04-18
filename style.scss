@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    font-family: "StatosSkyeng", sans-serif;
+}
+
+@font-face {
+    font-family: "StatosSkyeng";
+    src: url("./statosskyeng-v1.001/Desktop fonts/stratosskyeng-regular.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    background: #004980;
+}
+
+.app {
+    width: 480px;
+    height: 460px;
+    background: #C2F5FF;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    background: #7AC100;
+    border-radius: 12px;
+    border: none;
+    width: 246px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #FFFFFF;
+    transition: all .4s;
+
+    &:hover {
+        background: #3dc100;
+    }
+}
+
+.main {
+    &_title {
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 48px;
+        color: #004980;
+    }
+
+    &_difficulty-selection {
+        display: flex;
+        gap: 24px;
+        padding-top: 48px;
+        padding-bottom: 68px;
+    }
+
+    &_btn-dif-sel {
+        background: #FFFFFF;
+        border-radius: 12px;
+        border: none;
+        width: 98px;
+        height: 98px;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 72px;
+        color: #0080C1;
+        transition: all .4s;
+
+        &:hover {
+            background: #4ae1ff;
+            color: #02547e;
+        }
+    }
+}
