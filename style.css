@@ -20,15 +20,21 @@ body {
 .app {
   width: 480px;
   height: 460px;
-  background: #C2F5FF;
+  background: #c2f5ff;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.app_render-screen {
+  width: 100%;
+  height: 100vh;
+  background: none;
+  border-radius: 0;
+}
 
-.screen {
+.screen-difficulty-selection {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +42,7 @@ body {
 }
 
 .btn {
-  background: #7AC100;
+  background: #7ac100;
   border-radius: 12px;
   border: none;
   width: 246px;
@@ -44,7 +50,7 @@ body {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 0.4s;
 }
 .btn:hover {
@@ -64,7 +70,7 @@ body {
   padding-bottom: 68px;
 }
 .main_btn-dif-sel {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 12px;
   border: none;
   width: 98px;
@@ -72,7 +78,7 @@ body {
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  color: #0080C1;
+  color: #0080c1;
   font-family: "StatosSkyeng", sans-serif;
   transition: all 0.4s;
 }
