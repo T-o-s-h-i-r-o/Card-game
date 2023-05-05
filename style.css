@@ -9,15 +9,43 @@
   font-weight: normal;
 }
 body {
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
+  min-height: 100%;
   background: #004980;
   font-family: "StatosSkyeng", sans-serif;
 }
 
 .app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app_render-screen {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.render-screen-card-game {
+  width: 100%;
+  height: 100vh;
+  padding-top: 22px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding-left: calc(50% - 500px);
+  padding-right: calc(50% - 500px);
+}
+
+.top-block {
+  display: flex;
+  gap: 578px;
+  align-items: center;
+}
+
+.div-sds {
   width: 480px;
   height: 460px;
   background: #c2f5ff;
@@ -26,12 +54,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.app_render-screen {
-  width: 100%;
-  height: 100vh;
-  background: none;
-  border-radius: 0;
 }
 
 .screen-difficulty-selection {
@@ -55,6 +77,9 @@ body {
 }
 .btn:hover {
   background: #3dc100;
+}
+.btn_restart {
+  padding: 0;
 }
 
 .main_title {
@@ -88,4 +113,30 @@ body {
 }
 .main_btn-start {
   font-family: "StatosSkyeng", sans-serif;
+}
+
+.timer {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+}
+
+.min-sek {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #ffffff;
+  display: flex;
+  gap: 58px;
+  justify-content: flex-end;
+}
+
+.card-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
+  padding-top: 35px;
 }/*# sourceMappingURL=style.css.map */

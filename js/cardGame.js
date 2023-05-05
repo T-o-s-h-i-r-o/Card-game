@@ -14,10 +14,12 @@ class CardGame {
    }
 
    renderScreenDifficultySelection() {
-      this.container.classList.remove("app-render-screen");
-      this.container.classList.add("app");
+      this.container.classList.remove("app_render-screen");
 
       this.container.replaceChildren();
+
+      const divScDifSel = document.createElement("div");
+      divScDifSel.classList.add("div-sds");
 
       const section = document.createElement("section");
       section.classList.add("screen-difficulty-selection");
@@ -69,42 +71,20 @@ class CardGame {
       div.appendChild(buttonTwo);
       div.appendChild(buttonThree);
       section.appendChild(buttonStart);
+      divScDifSel.appendChild(section);
 
-      this.container.appendChild(section);
+      this.container.appendChild(divScDifSel);
    }
 
    renderScreenCardGame() {
       console.log(this.levelDifficulty);
 
-      this.container.classList.add("app-render-screen");
-      this.container.classList.remove("app");
+      this.container.classList.add("app_render-screen");
 
       this.container.replaceChildren();
 
-      // const section = document.createElement("section");
-      // section.classList.add("screen");
-
-      // const h1 = document.createElement("h1");
-      // h1.textContent = `${this.levelDifficulty}`;
-
-      // // это временная функция для проверки работоспособности
-      // const resetButton = document.createElement("button");
-      // resetButton.textContent = "Вернуться к выбору сложности";
-      // resetButton.classList.add("reset-btn");
-      // resetButton.addEventListener("click", (event) => {
-      //    event.preventDefault();
-      //    if (confirm("Вы действительно хотите вернуться в выбор сложности?")) {
-      //       localStorage.removeItem("levelDifficulty");
-      //       this.levelDifficulty = "";
-      //       this.renderScreenDifficultySelection();
-      //    }
-      // });
-
-      // section.appendChild(resetButton);
-      // // конец проверочной функции
-
       const section = document.createElement("section");
-      section.classList.add("screen-screen-card-game");
+      section.classList.add("render-screen-card-game");
 
       const divTopBlock = document.createElement("div");
       divTopBlock.classList.add("top-block");
@@ -114,31 +94,118 @@ class CardGame {
 
       const divMinSek = document.createElement("div");
       divMinSek.classList.add("min-sek");
-      divMinSek.textContent = "min sek";
+
+      const pMin = document.createElement("p");
+      pMin.classList.add("text-min-sek");
+      pMin.textContent = "min";
+
+      const pSek = document.createElement("p");
+      pSek.classList.add("text-min-sek");
+      pSek.textContent = "sek";
 
       const divTimer = document.createElement("div");
       divTimer.classList.add("timer");
       divTimer.textContent = "00.00";
 
       const button = document.createElement("button");
-      button.classList.add("btn-restart");
+      button.classList.add("btn", "btn_restart");
+      // button.textContent = "Начать заново";
+      // снизу временный текст
+      button.textContent = "Открыть карты";
+
+      const divCardTable = document.createElement("div");
+      divCardTable.classList.add("card-table");
+
+      for (let i = 0; i < 36; i++) {
+         const imgCardShirt = document.createElement("img");
+         imgCardShirt.classList.add("card-shirt");
+         imgCardShirt.src = "./images/shirt.png";
+         divCardTable.appendChild(imgCardShirt);
+      }
+
+      button.addEventListener("click", (event) => {
+         event.preventDefault();
+         if (confirm("Вы действительно хотите вернуться в выбор сложности?")) {
+            localStorage.removeItem("levelDifficulty");
+            this.levelDifficulty = "";
+            // this.renderScreenDifficultySelection();
+            // снизу временно выполняется другая функция
+            this.renderScreenOpenCards();
+         }
+      });
+
+      section.appendChild(divTopBlock);
+      divTopBlock.appendChild(divBlockTime);
+      divBlockTime.appendChild(divMinSek);
+      divMinSek.appendChild(pMin);
+      divMinSek.appendChild(pSek);
+      divBlockTime.appendChild(divTimer);
+      divTopBlock.appendChild(button);
+      section.appendChild(divCardTable);
+
+      this.container.appendChild(section);
+   }
+
+   renderScreenOpenCards() {
+      this.container.classList.add("app_render-screen");
+
+      this.container.replaceChildren();
+
+      const section = document.createElement("section");
+      section.classList.add("render-screen-card-game");
+
+      const divTopBlock = document.createElement("div");
+      divTopBlock.classList.add("top-block");
+
+      const divBlockTime = document.createElement("div");
+      divBlockTime.classList.add("block-time");
+
+      const divMinSek = document.createElement("div");
+      divMinSek.classList.add("min-sek");
+
+      const pMin = document.createElement("p");
+      pMin.classList.add("text-min-sek");
+      pMin.textContent = "min";
+
+      const pSek = document.createElement("p");
+      pSek.classList.add("text-min-sek");
+      pSek.textContent = "sek";
+
+      const divTimer = document.createElement("div");
+      divTimer.classList.add("timer");
+      divTimer.textContent = "00.00";
+
+      const button = document.createElement("button");
+      button.classList.add("btn", "btn_restart");
       button.textContent = "Начать заново";
 
       const divCardTable = document.createElement("div");
       divCardTable.classList.add("card-table");
 
-      const imgCardShirt = document.createElement("img");
-      imgCardShirt.classList.add("card-shirt");
-      imgCardShirt.src = "./images/shirt.png";
+      for (let i = 0; i < 36; i++) {
+         const imgCardShirt = document.createElement("img");
+         imgCardShirt.classList.add("card-shirt");
+         imgCardShirt.src = `./images/cards/card${[i + 1]}.png`;
+         divCardTable.appendChild(imgCardShirt);
+      }
 
-      // section.appendChild(h1);
+      button.addEventListener("click", (event) => {
+         event.preventDefault();
+         if (confirm("Вы действительно хотите вернуться в выбор сложности?")) {
+            localStorage.removeItem("levelDifficulty");
+            this.levelDifficulty = "";
+            this.renderScreenDifficultySelection();
+         }
+      });
+
       section.appendChild(divTopBlock);
       divTopBlock.appendChild(divBlockTime);
       divBlockTime.appendChild(divMinSek);
+      divMinSek.appendChild(pMin);
+      divMinSek.appendChild(pSek);
       divBlockTime.appendChild(divTimer);
       divTopBlock.appendChild(button);
       section.appendChild(divCardTable);
-      divCardTable.appendChild(imgCardShirt);
 
       this.container.appendChild(section);
    }
