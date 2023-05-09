@@ -1,0 +1,1 @@
+(()=>{const e=document.querySelector(".app");new CardGame(e)})();

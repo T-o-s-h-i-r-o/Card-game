@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":"MAAA,MAAMA,EAAYC,SAASC,cAAc,QAExB,IAAIC,SAASH,E","sources":["webpack://card-game/./js/index.js"],"sourcesContent":["const container = document.querySelector(\".app\");\n\nconst cardGame = new CardGame(container);\n"],"names":["container","document","querySelector","CardGame"],"sourceRoot":""}

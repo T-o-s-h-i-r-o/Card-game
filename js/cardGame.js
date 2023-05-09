@@ -6,8 +6,8 @@ class CardGame {
       this.levelDifficulty = localStorage.getItem("levelDifficulty");
 
       if (this.levelDifficulty) {
-         console.log("Вывод игры");
-         this.renderScreenCardGame();
+         this.renderScreenOpenCards();
+         // Временное название. Потом поменять на renderScreenCardGame
       } else {
          this.renderScreenDifficultySelection();
       }
@@ -54,11 +54,11 @@ class CardGame {
          const textContent = target.textContent;
 
          const levelDifficulty = arrLevelDifficulty[textContent - 1];
-         console.log(levelDifficulty);
 
          this.levelDifficulty = levelDifficulty;
          localStorage.setItem("levelDifficulty", levelDifficulty);
-         this.renderScreenCardGame();
+         this.renderScreenOpenCards();
+         // Временное название. Потом поменять на renderScreenCardGame
 
          if (!levelDifficulty) {
             console.log("Упс, что-то пошло не так");
@@ -76,77 +76,76 @@ class CardGame {
       this.container.appendChild(divScDifSel);
    }
 
-   renderScreenCardGame() {
-      console.log(this.levelDifficulty);
+   // renderScreenCardGame() {
+   //    this.container.classList.add("app_render-screen");
 
-      this.container.classList.add("app_render-screen");
+   //    this.container.replaceChildren();
 
-      this.container.replaceChildren();
+   //    const section = document.createElement("section");
+   //    section.classList.add("render-screen-card-game");
 
-      const section = document.createElement("section");
-      section.classList.add("render-screen-card-game");
+   //    const divTopBlock = document.createElement("div");
+   //    divTopBlock.classList.add("top-block");
 
-      const divTopBlock = document.createElement("div");
-      divTopBlock.classList.add("top-block");
+   //    const divBlockTime = document.createElement("div");
+   //    divBlockTime.classList.add("block-time");
 
-      const divBlockTime = document.createElement("div");
-      divBlockTime.classList.add("block-time");
+   //    const divMinSek = document.createElement("div");
+   //    divMinSek.classList.add("min-sek");
 
-      const divMinSek = document.createElement("div");
-      divMinSek.classList.add("min-sek");
+   //    const pMin = document.createElement("p");
+   //    pMin.classList.add("text-min-sek");
+   //    pMin.textContent = "min";
 
-      const pMin = document.createElement("p");
-      pMin.classList.add("text-min-sek");
-      pMin.textContent = "min";
+   //    const pSek = document.createElement("p");
+   //    pSek.classList.add("text-min-sek");
+   //    pSek.textContent = "sek";
 
-      const pSek = document.createElement("p");
-      pSek.classList.add("text-min-sek");
-      pSek.textContent = "sek";
+   //    const divTimer = document.createElement("div");
+   //    divTimer.classList.add("timer");
+   //    divTimer.textContent = "00.00";
 
-      const divTimer = document.createElement("div");
-      divTimer.classList.add("timer");
-      divTimer.textContent = "00.00";
+   //    const button = document.createElement("button");
+   //    button.classList.add("btn", "btn_restart");
+   //    // button.textContent = "Начать заново";
+   //    // снизу временный текст
+   //    button.textContent = "Открыть карты";
 
-      const button = document.createElement("button");
-      button.classList.add("btn", "btn_restart");
-      // button.textContent = "Начать заново";
-      // снизу временный текст
-      button.textContent = "Открыть карты";
+   //    const divCardTable = document.createElement("div");
+   //    divCardTable.classList.add("card-table");
 
-      const divCardTable = document.createElement("div");
-      divCardTable.classList.add("card-table");
+   //    for (let i = 0; i < 36; i++) {
+   //       const imgCardShirt = document.createElement("img");
+   //       imgCardShirt.classList.add("card-shirt");
+   //       imgCardShirt.src = "./static/shirt.png";
+   //       divCardTable.appendChild(imgCardShirt);
+   //    }
 
-      for (let i = 0; i < 36; i++) {
-         const imgCardShirt = document.createElement("img");
-         imgCardShirt.classList.add("card-shirt");
-         imgCardShirt.src = "./images/shirt.png";
-         divCardTable.appendChild(imgCardShirt);
-      }
+   //    button.addEventListener("click", (event) => {
+   //       event.preventDefault();
+   //       if (confirm("Вы действительно хотите вернуться в выбор сложности?")) {
+   //          localStorage.removeItem("levelDifficulty");
+   //          this.levelDifficulty = "";
+   //          // this.renderScreenDifficultySelection();
+   //          // снизу временно выполняется другая функция
+   //          this.renderScreenOpenCards();
+   //       }
+   //    });
 
-      button.addEventListener("click", (event) => {
-         event.preventDefault();
-         if (confirm("Вы действительно хотите вернуться в выбор сложности?")) {
-            localStorage.removeItem("levelDifficulty");
-            this.levelDifficulty = "";
-            // this.renderScreenDifficultySelection();
-            // снизу временно выполняется другая функция
-            this.renderScreenOpenCards();
-         }
-      });
+   //    section.appendChild(divTopBlock);
+   //    divTopBlock.appendChild(divBlockTime);
+   //    divBlockTime.appendChild(divMinSek);
+   //    divMinSek.appendChild(pMin);
+   //    divMinSek.appendChild(pSek);
+   //    divBlockTime.appendChild(divTimer);
+   //    divTopBlock.appendChild(button);
+   //    section.appendChild(divCardTable);
 
-      section.appendChild(divTopBlock);
-      divTopBlock.appendChild(divBlockTime);
-      divBlockTime.appendChild(divMinSek);
-      divMinSek.appendChild(pMin);
-      divMinSek.appendChild(pSek);
-      divBlockTime.appendChild(divTimer);
-      divTopBlock.appendChild(button);
-      section.appendChild(divCardTable);
-
-      this.container.appendChild(section);
-   }
+   //    this.container.appendChild(section);
+   // }
 
    renderScreenOpenCards() {
+      // Временное название. Потом поменять на renderScreenCardGame
       this.container.classList.add("app_render-screen");
 
       this.container.replaceChildren();
@@ -182,11 +181,54 @@ class CardGame {
       const divCardTable = document.createElement("div");
       divCardTable.classList.add("card-table");
 
-      for (let i = 0; i < 36; i++) {
-         const imgCardShirt = document.createElement("img");
-         imgCardShirt.classList.add("card-shirt");
-         imgCardShirt.src = `./images/cards/card${[i + 1]}.png`;
-         divCardTable.appendChild(imgCardShirt);
+      let indexLevelDif = 0;
+
+      if (this.levelDifficulty === "Легкий") {
+         indexLevelDif = 3;
+      } else if (this.levelDifficulty === "Средний") {
+         indexLevelDif = 6;
+      } else if (this.levelDifficulty === "Сложный") {
+         indexLevelDif = 9;
+      }
+
+      let arrGetRandomIndex = [];
+
+      function getRandomIndex() {
+         let randomNubmer = 0;
+
+         do {
+            let repeatNumber = 0;
+            let indexImg = Math.floor(Math.random() * (36 - 1 + 1)) + 1;
+
+            for (let i = 0; i < arrGetRandomIndex.length; i++) {
+               if (indexImg === arrGetRandomIndex[i]) {
+                  repeatNumber += 1;
+               }
+            }
+
+            if (repeatNumber === 0) {
+               randomNubmer += 1;
+               arrGetRandomIndex.push(indexImg, indexImg);
+            }
+         } while (randomNubmer < indexLevelDif);
+
+         arrGetRandomIndex.sort(() => Math.random() - 0.5);
+      }
+
+      getRandomIndex(1, 36);
+
+      for (let i = 0; i < indexLevelDif * 2; i++) {
+         const imgRenderCard = document.createElement("img");
+         imgRenderCard.classList.add("card-shirt-down");
+         imgRenderCard.src = `./static/cards/card${arrGetRandomIndex[i]}.png`;
+         divCardTable.appendChild(imgRenderCard);
+      }
+
+      for (let i = 0; i < indexLevelDif * 2; i++) {
+         const imgCardShirtUp = document.createElement("img");
+         imgCardShirtUp.classList.add("card-shirt-up", "card-shirt-up-hidden");
+         imgCardShirtUp.src = `./static/shirt.png`;
+         divCardTable.appendChild(imgCardShirtUp);
       }
 
       button.addEventListener("click", (event) => {
@@ -208,5 +250,31 @@ class CardGame {
       section.appendChild(divCardTable);
 
       this.container.appendChild(section);
+
+      setTimeout(() => {
+         this.getScreenStartGame();
+      }, 5000);
+   }
+
+   getScreenStartGame() {
+      const hiddenCards = document.querySelectorAll(".card-shirt-down");
+      const cardsShirtUp = document.querySelectorAll(".card-shirt-up");
+
+      hiddenCards.forEach((hiddenCard) => {
+         hiddenCard.classList.add("card-shirt-down-hidden");
+      });
+
+      cardsShirtUp.forEach((cardShirtUp) => {
+         cardShirtUp.classList.remove("card-shirt-up-hidden");
+      });
+
+      cardsShirtUp.forEach((cardShirtUp) => {
+         cardShirtUp.addEventListener("click", function (event) {
+            const target = event.target;
+            target.classList.add("card-shirt-up-hidden");
+
+            // Как сделать так, чтобы появлялась нужная карта?
+         });
+      });
    }
 }
