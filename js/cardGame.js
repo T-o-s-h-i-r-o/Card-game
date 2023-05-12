@@ -1,4 +1,6 @@
 const arrLevelDifficulty = ["Легкий", "Средний", "Сложный"];
+let arrGetRandomIndex = [];
+let arrShirtUpIndex = [];
 
 class CardGame {
    constructor(container) {
@@ -191,8 +193,6 @@ class CardGame {
          indexLevelDif = 9;
       }
 
-      let arrGetRandomIndex = [];
-
       function getRandomIndex() {
          let randomNubmer = 0;
 
@@ -218,17 +218,22 @@ class CardGame {
       getRandomIndex(1, 36);
 
       for (let i = 0; i < indexLevelDif * 2; i++) {
-         const imgRenderCard = document.createElement("img");
-         imgRenderCard.classList.add("card-shirt-down");
-         imgRenderCard.src = `./static/cards/card${arrGetRandomIndex[i]}.png`;
-         divCardTable.appendChild(imgRenderCard);
-      }
+         const imgBox = document.createElement("div");
+         imgBox.classList.add("img-box");
 
-      for (let i = 0; i < indexLevelDif * 2; i++) {
+         const imgRenderCard = document.createElement("img");
+         imgRenderCard.classList.add("card-shirt-down", `img${[i]}`);
+         imgRenderCard.src = `./static/cards/card${arrGetRandomIndex[i]}.png`;
+
          const imgCardShirtUp = document.createElement("img");
          imgCardShirtUp.classList.add("card-shirt-up", "card-shirt-up-hidden");
          imgCardShirtUp.src = `./static/shirt.png`;
-         divCardTable.appendChild(imgCardShirtUp);
+         imgCardShirtUp.dataset.indexNumber = `${i}`;
+         arrShirtUpIndex.push(i);
+
+         imgBox.appendChild(imgRenderCard);
+         imgBox.appendChild(imgCardShirtUp);
+         divCardTable.appendChild(imgBox);
       }
 
       button.addEventListener("click", (event) => {
@@ -236,6 +241,8 @@ class CardGame {
          if (confirm("Вы действительно хотите вернуться в выбор сложности?")) {
             localStorage.removeItem("levelDifficulty");
             this.levelDifficulty = "";
+            arrGetRandomIndex = [];
+            arrShirtUpIndex = [];
             this.renderScreenDifficultySelection();
          }
       });
@@ -268,12 +275,35 @@ class CardGame {
          cardShirtUp.classList.remove("card-shirt-up-hidden");
       });
 
+      let firstChoice = 37;
+      let secondChoice = 37;
+
       cardsShirtUp.forEach((cardShirtUp) => {
          cardShirtUp.addEventListener("click", function (event) {
             const target = event.target;
             target.classList.add("card-shirt-up-hidden");
 
-            // Как сделать так, чтобы появлялась нужная карта?
+            let indexTarget = target.dataset.indexNumber;
+            const img = document.querySelector(`.img${indexTarget}`);
+            img.classList.remove("card-shirt-down-hidden");
+
+            if (firstChoice === 37) {
+               firstChoice = arrGetRandomIndex[indexTarget];
+               console.log("firstChoice", firstChoice);
+            } else {
+               secondChoice = arrGetRandomIndex[indexTarget];
+               console.log("secondChoice", secondChoice);
+            }
+
+            if (firstChoice < 37 && secondChoice < 37) {
+               if (firstChoice === secondChoice) {
+                  alert("Вы победили!");
+               } else {
+                  alert("Вы проиграли!");
+               }
+               firstChoice = 37;
+               secondChoice = 37;
+            }
          });
       });
    }
