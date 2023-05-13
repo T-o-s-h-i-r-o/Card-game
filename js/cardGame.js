@@ -2,7 +2,7 @@ const arrLevelDifficulty = ["Легкий", "Средний", "Сложный"];
 let arrGetRandomIndex = [];
 let arrShirtUpIndex = [];
 
-class CardGame {
+export class CardGame {
    constructor(container) {
       this.container = container;
       this.levelDifficulty = localStorage.getItem("levelDifficulty");

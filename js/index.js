@@ -1,8 +1,6 @@
-import { cardGameJs } from "./cardGame.js";
+import { CardGame } from "./cardGame.js";
 import "../style.css";
 
 const container = document.querySelector(".app");
 
-const cardGame = new CardGame(container);
-
-cardGameJs();
+new CardGame(container);
