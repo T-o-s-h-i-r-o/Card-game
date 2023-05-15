@@ -1,3 +1,6 @@
-const container = document.querySelector('.app');
+import { CardGame } from "./cardGame.js";
+import "../style.css";
 
-const cardGame = new CardGame(container);
+const container = document.querySelector(".app");
+
+new CardGame(container);

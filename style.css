@@ -9,18 +9,54 @@
   font-weight: normal;
 }
 body {
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
+  min-height: 100%;
   background: #004980;
   font-family: "StatosSkyeng", sans-serif;
 }
 
 .app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app_render-screen {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.card-shirt-down-hidden {
+  display: none;
+}
+
+.card-shirt-up-hidden {
+  display: none;
+}
+
+.render-screen-card-game {
+  width: 100%;
+  height: 100vh;
+  padding-top: 22px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding-left: calc(50% - 500px);
+  padding-right: calc(50% - 500px);
+}
+
+.top-block {
+  display: flex;
+  gap: 578px;
+  align-items: center;
+}
+
+.div-sds {
   width: 480px;
   height: 460px;
-  background: #C2F5FF;
+  background: #c2f5ff;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -28,7 +64,7 @@ body {
   justify-content: center;
 }
 
-.screen {
+.screen-difficulty-selection {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +72,7 @@ body {
 }
 
 .btn {
-  background: #7AC100;
+  background: #7ac100;
   border-radius: 12px;
   border: none;
   width: 246px;
@@ -44,11 +80,14 @@ body {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 0.4s;
 }
 .btn:hover {
   background: #3dc100;
+}
+.btn_restart {
+  padding: 0;
 }
 
 .main_title {
@@ -64,7 +103,7 @@ body {
   padding-bottom: 68px;
 }
 .main_btn-dif-sel {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 12px;
   border: none;
   width: 98px;
@@ -72,7 +111,7 @@ body {
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  color: #0080C1;
+  color: #0080c1;
   font-family: "StatosSkyeng", sans-serif;
   transition: all 0.4s;
 }
@@ -82,4 +121,30 @@ body {
 }
 .main_btn-start {
   font-family: "StatosSkyeng", sans-serif;
+}
+
+.timer {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+}
+
+.min-sek {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #ffffff;
+  display: flex;
+  gap: 58px;
+  justify-content: flex-end;
+}
+
+.card-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
+  padding-top: 35px;
 }/*# sourceMappingURL=style.css.map */

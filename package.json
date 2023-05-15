@@ -1,0 +1,51 @@
+{
+   "name": "card-game",
+   "version": "1.0.0",
+   "description": "",
+   "main": "./js/index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "format": "prettier --write ./js/",
+      "lint:js": "eslint ./js/**/*.js",
+      "lint:css": "stylelint ./*.css",
+      "lint": "npm run lint:js && npm run lint:css",
+      "prepare": "husky install",
+      "build": "cross-env NODE_ENV=production webpack",
+      "start": "webpack-dev-server --open"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/T-o-s-h-i-r-o/Card-game.git"
+   },
+   "author": "Anton Shapoval anton_shapoval.bk@mail.ru",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/T-o-s-h-i-r-o/Card-game/issues"
+   },
+   "homepage": "https://github.com/T-o-s-h-i-r-o/Card-game#readme",
+   "devDependencies": {
+      "@babel/core": "^7.21.8",
+      "@babel/preset-env": "^7.21.5",
+      "babel-eslint": "^10.1.0",
+      "babel-loader": "^9.1.2",
+      "copy-webpack-plugin": "^11.0.0",
+      "cross-env": "^7.0.3",
+      "css-loader": "^6.7.3",
+      "css-minimizer-webpack-plugin": "^5.0.0",
+      "eslint": "^8.39.0",
+      "eslint-config-prettier": "^8.8.0",
+      "eslint-plugin-prettier": "^4.2.1",
+      "html-webpack-plugin": "^5.5.1",
+      "husky": "^8.0.3",
+      "mini-css-extract-plugin": "^2.7.5",
+      "prettier": "^2.8.8",
+      "style-loader": "^3.3.2",
+      "stylelint": "^14.16.1",
+      "stylelint-config-prettier": "^9.0.5",
+      "stylelint-config-standard": "^29.0.0",
+      "stylelint-prettier": "^2.0.0",
+      "webpack": "^5.82.0",
+      "webpack-cli": "^5.1.0",
+      "webpack-dev-server": "^4.14.0"
+   }
+}
