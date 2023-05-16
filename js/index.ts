@@ -1,5 +1,6 @@
-import { CardGame } from "./cardGame.js";
+import { CardGame } from "./cardGame.ts";
 import "../style.css";
+import * as _ from "lodash";
 
 const container = document.querySelector(".app");
 
