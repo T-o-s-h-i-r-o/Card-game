@@ -6,7 +6,7 @@ let t;
 
 export class CardGame {
    container: HTMLElement;
-   levelDifficulty: string;
+   levelDifficulty: string | null;
 
    constructor(container) {
       this.container = container;
@@ -272,7 +272,7 @@ export class CardGame {
             // if (targetElement) {
             targetElement.classList.add("card-shirt-up-hidden");
 
-            let indexTarget = targetElement.dataset.indexNumber;
+            let indexTarget = targetElement.dataset.indexNumber!;
             const img = document.querySelector(`.img${indexTarget}`);
             if (img) {
                img.classList.remove("card-shirt-down-hidden");

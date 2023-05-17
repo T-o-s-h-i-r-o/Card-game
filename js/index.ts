@@ -1,4 +1,4 @@
-import { CardGame } from "./cardGame.ts";
+import { CardGame } from "./cardGame";
 import "../style.css";
 import * as _ from "lodash";
 
