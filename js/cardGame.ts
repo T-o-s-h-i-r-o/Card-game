@@ -2,6 +2,7 @@ const arrLevelDifficulty = ["Легкий", "Средний", "Сложный"];
 let arrGetRandomIndex: number[] = [];
 let arrShirtUpIndex: number[] = [];
 let indexLevelDif = 0;
+let textContent: string | null = "";
 let t;
 
 export class CardGame {
@@ -51,42 +52,41 @@ export class CardGame {
       buttonStart.textContent = "Старт";
       buttonStart.classList.add("btn", "main_btn-start");
 
-      let textContent = ""; // почему не используется переменная
-      let numberTextContent = 0; // добавил для строчки 89
+      let numberTextContent = 0;
       let buttonClick = 0;
 
       div.addEventListener("click", (event) => {
          event.preventDefault();
          const targetElement = event.target as HTMLElement;
-         const textContent = targetElement.textContent;
+         textContent = targetElement.textContent;
 
          if (textContent === "1") {
             buttonOne.classList.add("main_btn-dif-sel_active");
             buttonTwo.classList.remove("main_btn-dif-sel_active");
             buttonThree.classList.remove("main_btn-dif-sel_active");
             buttonClick += 1;
-            numberTextContent = 1; // добавил для строчки 89
+            numberTextContent = 1;
          }
          if (textContent === "2") {
             buttonOne.classList.remove("main_btn-dif-sel_active");
             buttonTwo.classList.add("main_btn-dif-sel_active");
             buttonThree.classList.remove("main_btn-dif-sel_active");
             buttonClick += 1;
-            numberTextContent = 2; // добавил для строчки 89
+            numberTextContent = 2;
          }
          if (textContent === "3") {
             buttonOne.classList.remove("main_btn-dif-sel_active");
             buttonTwo.classList.remove("main_btn-dif-sel_active");
             buttonThree.classList.add("main_btn-dif-sel_active");
             buttonClick += 1;
-            numberTextContent = 3; // добавил для строчки 89
+            numberTextContent = 3;
          }
       });
 
       buttonStart.addEventListener("click", (event) => {
          event.preventDefault();
 
-         const levelDifficulty = arrLevelDifficulty[numberTextContent - 1]; // был textContent
+         const levelDifficulty = arrLevelDifficulty[numberTextContent - 1];
 
          if (typeof levelDifficulty === "string") {
             if (buttonClick > 0) {
@@ -172,7 +172,7 @@ export class CardGame {
          arrGetRandomIndex.sort(() => Math.random() - 0.5);
       }
 
-      getRandomIndex(); // убрал 1 и 36
+      getRandomIndex();
 
       for (let i = 0; i < indexLevelDif * 2; i++) {
          const imgBox = document.createElement("div");
@@ -193,13 +193,19 @@ export class CardGame {
          divCardTable.appendChild(imgBox);
       }
 
+      let iTimer = 0;
+
       button.addEventListener("click", (event) => {
          event.preventDefault();
+
          if (confirm("Вы действительно хотите вернуться в выбор сложности?")) {
             localStorage.removeItem("levelDifficulty");
             this.levelDifficulty = "";
             arrGetRandomIndex = [];
             arrShirtUpIndex = [];
+            iTimer = 1;
+            clearTimeout(t);
+
             this.renderScreenDifficultySelection();
          }
       });
@@ -216,14 +222,16 @@ export class CardGame {
       this.container.appendChild(section);
 
       setTimeout(() => {
-         this.getScreenStartGame();
+         if (!(iTimer === 1)) {
+            this.getScreenStartGame();
+         }
       }, 5000);
    }
 
    getScreenStartGame() {
       const hiddenCards = document.querySelectorAll(".card-shirt-down");
       const cardsShirtUp = document.querySelectorAll(".card-shirt-up");
-      const blockTimer = document.querySelector(".timer");
+      const blockTimer = document.querySelector(".timer")!; // : HTMLElement | null
 
       let sec = 0;
       let min = 0;
@@ -235,6 +243,7 @@ export class CardGame {
             min++;
             if (min >= 60) {
                // this.renderScreenLose();
+               blockTimer.textContent = "00.00";
                console.log("Ошибка");
             }
          }
@@ -267,9 +276,7 @@ export class CardGame {
 
       cardsShirtUp.forEach((cardShirtUp) => {
          cardShirtUp.addEventListener("click", (event) => {
-            // const target = event.target;
             const targetElement = event.target as HTMLElement;
-            // if (targetElement) {
             targetElement.classList.add("card-shirt-up-hidden");
 
             let indexTarget = targetElement.dataset.indexNumber!;
@@ -288,17 +295,20 @@ export class CardGame {
                if (firstChoice === secondChoice) {
                   indexFinal += 1;
                   if (indexFinal === indexLevelDif) {
-                     clearTimeout(t);
+                     sec = 0;
+                     min = 0;
                      this.renderScreenWin();
+                     clearTimeout(t);
                   }
                } else {
+                  sec = 0;
+                  min = 0;
                   clearTimeout(t);
                   this.renderScreenLose();
                }
                firstChoice = 37;
                secondChoice = 37;
             }
-            // }
          });
       });
    }
@@ -343,6 +353,7 @@ export class CardGame {
                this.levelDifficulty = "";
                arrGetRandomIndex = [];
                arrShirtUpIndex = [];
+
                this.renderScreenDifficultySelection();
             }
          });
@@ -397,6 +408,7 @@ export class CardGame {
                this.levelDifficulty = "";
                arrGetRandomIndex = [];
                arrShirtUpIndex = [];
+
                this.renderScreenDifficultySelection();
             }
          });
