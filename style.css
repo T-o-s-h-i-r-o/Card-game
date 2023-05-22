@@ -21,11 +21,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-.app_render-screen {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
 
 .card-shirt-down-hidden {
   display: none;
@@ -119,6 +114,10 @@ body {
   background: #4ae1ff;
   color: #02547e;
 }
+.main_btn-dif-sel_active {
+  background: #0ed7ff;
+  color: #013752;
+}
 .main_btn-start {
   font-family: "StatosSkyeng", sans-serif;
 }
@@ -147,4 +146,50 @@ body {
   flex-direction: row;
   gap: 15px;
   padding-top: 35px;
+}
+
+.render-sreen-final {
+  background: #c2f5ff;
+  border-radius: 12px;
+  width: 480px;
+  height: 459px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.render-sreen-final__turbid {
+  background: #004980;
+  opacity: 0.9;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+}
+.render-sreen-final__img {
+  padding-top: 32px;
+  padding-bottom: 8px;
+}
+.render-sreen-final__title {
+  color: #004980;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  padding-bottom: 28px;
+}
+.render-sreen-final__text {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  padding-bottom: 10px;
+}
+.render-sreen-final__time-game {
+  padding-bottom: 40px;
+}
+
+.time-game {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #000000;
 }/*# sourceMappingURL=style.css.map */
