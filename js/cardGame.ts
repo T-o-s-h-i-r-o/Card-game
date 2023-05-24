@@ -13,7 +13,7 @@ export class CardGame {
       this.container = container;
       this.levelDifficulty = localStorage.getItem("levelDifficulty");
 
-      if (this.levelDifficulty) {
+      if (arrLevelDifficulty.includes(this.levelDifficulty || "")) {
          this.renderScreenCardGame();
       } else {
          this.renderScreenDifficultySelection();
